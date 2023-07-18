@@ -21,7 +21,7 @@ class AdminController extends Controller
 
         $credentials = $request->only('email','password');
         if(Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->route('admin.dashboard')->withSuccess('Congratulations! You may see your dashboard.');
+            return redirect()->route('admin.dashboard')->withSuccess('You may see your dashboard.');
         }
         else {
             return redirect()->route('admin.login')->withWarning('Warning! Invalid Credential.');

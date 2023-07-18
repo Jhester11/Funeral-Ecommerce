@@ -2,23 +2,22 @@
 
 namespace App\Models;
 
-use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Category extends Model
+class Brand extends Model
 {
     use HasFactory;
-    protected $table = 'categories';
+    protected $table = 'brands';
     protected $fillable = [
         'name',
         'slug',
-        'description',
-        'image',
         'status',
+        'category_id',
     ];
-    public function brands()
+    public function category()
     {
-        return $this->hasMany(Brand::class, 'category_id', 'id')->where('status', '0');
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 }

@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Funeral\Admin\AdminController;
+use App\Http\Controllers\Funeral\Admin\BrandController;
 use App\Http\Controllers\Funeral\Admin\CategoryController;
+use App\Http\Livewire\Funeral\Admin\BrandIndex;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,8 +43,10 @@ Route::prefix('admin')->name('admin.')->group(function(){
             Route::put('category/{category}', 'update');
             Route::get('/category/{category}/delete', 'destroy');
         });
-
     });
+
+    // Brands Routes
+    Route::get('/brands', BrandIndex::class);
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -30,8 +30,9 @@
     @yield('scripts')
     @livewireScripts
     @stack('scripts')
-    {{-- Sweet Alert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- Alertify --}}
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
     {{-- Script for modal --}}
     <script>
         window.addEventListener('modal', event => {
