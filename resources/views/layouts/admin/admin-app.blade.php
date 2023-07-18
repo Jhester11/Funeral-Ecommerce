@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <div class="container-scroller">
         @include('layouts.admin.inc.navbar')
         <div class="container-fluid page-body-wrapper">
@@ -25,7 +26,6 @@
         </div>
     </div>
     @include('layouts.admin.inc.scripts')
-    @include('sweetalert::alert')
     @stack('modals')
     @yield('scripts')
     @livewireScripts

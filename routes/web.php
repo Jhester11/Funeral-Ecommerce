@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Funeral\Admin\AdminController;
+use App\Http\Controllers\Funeral\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,17 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::middleware(['auth:admin', 'PreventBackHistory'])->group(function () {
         Route::view('/dashboard', 'funeral.admin.dashboard')->name('dashboard');
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
+
+        // Category Routes
+        Route::controller(CategoryController::class)->group(function () {
+            Route::get('/category', 'category');
+            Route::get('/category/create', 'create');
+            Route::post('/category', 'store');
+            Route::get('/category/{category}/edit', 'edit');
+            Route::put('category/{category}', 'update');
+            Route::get('/category/{category}/delete', 'destroy');
+        });
+
     });
 });
 

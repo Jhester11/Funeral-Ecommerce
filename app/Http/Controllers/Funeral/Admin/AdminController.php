@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
+
 class AdminController extends Controller
 {
     public function check(Request $request)
@@ -23,7 +24,7 @@ class AdminController extends Controller
             return redirect()->route('admin.dashboard')->withSuccess('Congratulations! You may see your dashboard.');
         }
         else {
-            return redirect()->route('learning.login')->withWarning('Incorrect Information');
+            return redirect()->route('admin.login')->withWarning('Warning! Invalid Credential.');
         }
     }
 
@@ -31,6 +32,6 @@ class AdminController extends Controller
     public function logout()
     {
         Auth::guard('admin')->logout();
-        return redirect()->route('admin.login');
+        return redirect()->route('admin.login')->withSuccess('Success! You are succesfully logout');
     }
 }
