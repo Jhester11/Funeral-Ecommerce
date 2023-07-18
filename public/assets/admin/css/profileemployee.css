@@ -1,0 +1,73 @@
+/* Employee Profile */
+img {
+    width: unset;
+    height: 100%;
+}
+.wrapper {
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+    position: relative;
+}
+.image-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f8fbfd;
+    box-shadow: 0 5px 5px --4px rgba(0, 0, 0, 0.2);
+    animation: 0.5s animated1 linear;
+}
+@keyframes animated1 {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.image-container i {
+    font-size: 90px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #37adfd;
+}
+.image-container img {
+    transform: translateZ(1px);
+}
+.camera-icon {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: #37adfd;
+    color: #fff;
+    display: grid;
+    place-content: center;
+    border-radius: 50%;
+    position: absolute;
+    right: 8px;
+    bottom: 5px;
+    animation: animate2 0.3s linear;
+    font-size: 22px;
+}
+.camera-icon i {
+    margin-bottom: -4px;
+}
+@keyframes animate2 {
+    0% {
+        transform: scale(0);
+    }
+    60% {
+        transform: scale(1,3);
+    }
+    10% {
+        transform: scale(1);
+    }
+}
+
+input.focus, input.active {
+    border-color: transparent;
+        border-bottom: 2px solid #1c87c9;
+}
