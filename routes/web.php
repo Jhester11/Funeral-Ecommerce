@@ -8,6 +8,7 @@ use App\Http\Controllers\Funeral\Admin\BrandController;
 use App\Http\Controllers\Funeral\Admin\ColorController;
 use App\Http\Controllers\Funeral\Admin\ProductController;
 use App\Http\Controllers\Funeral\Admin\CategoryController;
+use App\Http\Controllers\Funeral\Admin\SliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::post('product-color/{prod_color_id}', 'updateProdColorQty');
         Route::get("product-color/{prod_color_id}/delete", 'deleteProdColor');
+    });
+
+    // Slider Routes
+    Route::controller(SliderController::class)->group(function () {
+        Route::get('/sliders', 'slider');
+        Route::get('/sliders/create', 'create');
+        Route::post('/sliders/create', 'store');
+        Route::get('/sliders/{slider}/edit', 'edit');
+        Route::put('sliders/{slider}', 'update');
+        Route::get('/sliders/{slider}/delete', 'destroy');
     });
 });
 
