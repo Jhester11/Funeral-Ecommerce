@@ -11,7 +11,7 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#inventory" aria-expanded="false"
                 aria-controls="inventory">
                 <i class="mdi mdi-bulletin-board menu-icon"></i>
-                <span class="menu-title">Inventory</span>
+                <span class="menu-title">Coffin Inventory</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="inventory">

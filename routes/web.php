@@ -3,29 +3,55 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Funeral\Admin\BrandIndex;
+use App\Http\Controllers\Funeral\User\UserController;
 use App\Http\Controllers\Funeral\Admin\AdminController;
 use App\Http\Controllers\Funeral\Admin\BrandController;
 use App\Http\Controllers\Funeral\Admin\ColorController;
+use App\Http\Controllers\Funeral\Admin\SliderController;
 use App\Http\Controllers\Funeral\Admin\ProductController;
 use App\Http\Controllers\Funeral\Admin\CategoryController;
-use App\Http\Controllers\Funeral\Admin\SliderController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\Funeral\Frontend\FrontendController;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
 Auth::routes();
+
+// Frontend Routes
+Route::controller(FrontendController::class)->group(function () {
+    Route::get('/', 'home');
+    Route::get('/collections', 'categories');
+    Route::get('/collections/{category_slug}', 'products');
+    Route::get('/collections/{category_slug}/{product_slug}', 'productView');
+
+    Route::get('/new-arrivals', 'newArrival');
+    Route::get('/featured-products', 'featuredProducts');
+    Route::get('search', 'searchProducts');
+});
+
+// User Routes
+Route::prefix('user')->name('user.')->group(function () {
+    Route::middleware(['guest:web', 'PreventBackHistory'])->group(function () {
+        Route::view('/login', 'funeral.user.login')->name('login');
+        Route::view('/register', 'funeral.user.register')->name('register');
+        Route::post('/create', [UserController::class, 'create'])->name('create');
+        Route::post('/check', [UserController::class, 'check'])->name('check');
+        Route::get('/verify', [UserController::class, 'verify'])->name('verify');
+
+        Route::get('password/forgot', [UserController::class, 'showForgotForm'])->name('forgot.password.form');
+        Route::post('password/forgot', [UserController::class, 'sendResetLink'])->name('forgot.password.link');
+        Route::get('password/reset/{token}', [UserController::class, 'showResetForm'])->name('reset.password.form');
+        Route::post('password/reset', [UserController::class, 'resetPassword'])->name('reset.password');
+    });
+    Route::middleware(['auth:web', 'is_user_verify_email', 'PreventBackHistory'])->group(function () {
+        Route::view('/home', 'funeral.user.home')->name('home');
+        Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+        //Homepage Routes
+        Route::get('homepage', [FrontendController::class, 'home'])->name('homepage');
+    });
+});
 
 // Admin Route
 Route::prefix('admin')->name('admin.')->group(function () {
