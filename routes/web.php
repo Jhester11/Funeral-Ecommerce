@@ -6,6 +6,7 @@ use App\Http\Livewire\Funeral\Admin\BrandIndex;
 use App\Http\Controllers\Funeral\Admin\AdminController;
 use App\Http\Controllers\Funeral\Admin\BrandController;
 use App\Http\Controllers\Funeral\Admin\ColorController;
+use App\Http\Controllers\Funeral\Admin\ProductController;
 use App\Http\Controllers\Funeral\Admin\CategoryController;
 
 /*
@@ -57,6 +58,20 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/colors/{color}/edit', 'edit');
         Route::put('/colors/{color_id}', 'update');
         Route::get('/colors/{color_id}/delete', 'destroy');
+    });
+
+    // Products Routes
+    Route::controller(ProductController::class)->group(function () {
+        Route::get('/products', 'product');
+        Route::get('/products/create', 'create');
+        Route::post('/products', 'store');
+        Route::get('/products/{product}/edit', 'edit');
+        Route::put('/products/{product}', 'update');
+        Route::get('products/{product_id}/delete', 'destroy');
+        Route::get('product-image/{product_image_id}/delete', 'destroyImage');
+
+        Route::post('product-color/{prod_color_id}', 'updateProdColorQty');
+        Route::get("product-color/{prod_color_id}/delete", 'deleteProdColor');
     });
 });
 
