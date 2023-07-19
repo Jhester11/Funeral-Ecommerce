@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Funeral\Admin\BrandIndex;
 use App\Http\Controllers\Funeral\Admin\AdminController;
 use App\Http\Controllers\Funeral\Admin\BrandController;
+use App\Http\Controllers\Funeral\Admin\ColorController;
 use App\Http\Controllers\Funeral\Admin\CategoryController;
-use App\Http\Livewire\Funeral\Admin\BrandIndex;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +19,14 @@ use App\Http\Livewire\Funeral\Admin\BrandIndex;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 // Admin Route
-Route::prefix('admin')->name('admin.')->group(function(){
+Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['guest:admin', 'PreventBackHistory'])->group(function () {
         Route::view('/login', 'funeral.admin.login')->name('login');
         Route::post('/check', [AdminController::class, 'check'])->name('check');
@@ -47,6 +48,16 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
     // Brands Routes
     Route::get('/brands', BrandIndex::class);
+
+    // Colors Routes
+    Route::controller(ColorController::class)->group(function () {
+        Route::get('/colors', 'color');
+        Route::get('/colors/create', 'create');
+        Route::post('/colors/create', 'store');
+        Route::get('/colors/{color}/edit', 'edit');
+        Route::put('/colors/{color_id}', 'update');
+        Route::get('/colors/{color_id}/delete', 'destroy');
+    });
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

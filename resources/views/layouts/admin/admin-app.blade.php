@@ -56,7 +56,7 @@
                 if (result.isConfirmed) {
                     Swal.fire(
                         'Deleted!',
-                        'Your product has been deleted.',
+                        'Your Data has been deleted.',
                         'success'
                     )
                     location.href = self.attr('href');
