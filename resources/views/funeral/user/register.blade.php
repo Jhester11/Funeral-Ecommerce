@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin-custom.css') }}">
-    <link rel="shortcut icon" href="{{ asset('assets/img/I-BIKEMO_logo.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('assets/img/mini-logo.png') }}" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ asset('assets/frontend/custom.css') }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
