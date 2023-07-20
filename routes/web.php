@@ -11,6 +11,7 @@ use App\Http\Controllers\Funeral\Admin\SliderController;
 use App\Http\Controllers\Funeral\Admin\ProductController;
 use App\Http\Controllers\Funeral\Admin\CategoryController;
 use App\Http\Controllers\Funeral\Frontend\FrontendController;
+use App\Http\Controllers\Funeral\Frontend\WishlistController;
 
 Auth::routes();
 
@@ -24,6 +25,23 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/new-arrivals', 'newArrival');
     Route::get('/featured-products', 'featuredProducts');
     Route::get('search', 'searchProducts');
+});
+
+// Frontend routes securing
+Route::middleware(['auth'])->group(function () {
+    Route::get('wishlist', [WishlistController::class, 'wishlist']);
+    Route::get('cart', [CartController::class, 'cart']);
+    Route::get('checkout', [CheckoutController::class, 'checkout']);
+
+    // Checking orders
+    Route::get('orders', [OrderController::class, 'orders']);
+    Route::get('orders/{orderId}', [OrderController::class, 'show']);
+
+    // User Routes
+    Route::get('profile', [FrontendUserController::class, 'show']);
+    Route::post('profile', [FrontendUserController::class, 'updateUserDetails']);
+    Route::get('change-password', [FrontendUserController::class, 'passwordCreated']);
+    Route::post('change-password', [FrontendUserController::class, 'changePassword']);
 });
 
 // User Routes
