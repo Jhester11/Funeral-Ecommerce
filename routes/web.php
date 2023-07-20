@@ -12,10 +12,6 @@ use App\Http\Controllers\Funeral\Admin\ProductController;
 use App\Http\Controllers\Funeral\Admin\CategoryController;
 use App\Http\Controllers\Funeral\Frontend\FrontendController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Auth::routes();
 
 // Frontend Routes

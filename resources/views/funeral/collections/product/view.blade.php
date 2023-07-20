@@ -1,4 +1,5 @@
 @extends('layouts.frontend.frontend-app')
+@section('title', 'View Products')
 
 @section('name')
     {{ $products->name }}
@@ -13,5 +14,5 @@
 @endsection
 
 @section('content')
-    <livewire:frontend.product.view-index :category="$category" :products="$products"></livewire:frontend.product.view-index>
+    <livewire:funeral.frontend.product.view-index :category="$category" :products="$products"></livewire:funeral.frontend.product.view-index>
 @endsection

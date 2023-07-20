@@ -19,12 +19,12 @@
                     <ul class="nav justify-content-end">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('cart') }}" >
-                                <i class="fa fa-shopping-cart"></i> Cart ()
+                                <i class="fa fa-shopping-cart"></i> Cart <span style="color: blue;">(<livewire:funeral.frontend.cart.cartcount-index></livewire:funeral.frontend.cart.cartcount-index>)</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('wishlist') }}">
-                                <i class="fa fa-heart"></i> Wishlist ()
+                                <i class="fa fa-heart"></i> Wishlist <span style="color: blue;">(<livewire:funeral.frontend.product.wishlistcount-index></livewire:funeral.frontend.product.wishlistcount-index>)</span>
                             </a>
                         </li>
                         @guest

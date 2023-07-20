@@ -26,4 +26,9 @@ class Category extends Model
     {
         return $this->hasMany(Product::class, 'category_id', 'id');
     }
+
+    public function relatedProducts()
+    {
+        return $this->hasMany(Product::class, 'category_id', 'id')->latest()->take(20);
+    }
 }
