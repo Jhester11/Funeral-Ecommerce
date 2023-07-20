@@ -9,6 +9,7 @@ use App\Http\Controllers\Funeral\Admin\BrandController;
 use App\Http\Controllers\Funeral\Admin\ColorController;
 use App\Http\Controllers\Funeral\Admin\SliderController;
 use App\Http\Controllers\Funeral\Admin\ProductController;
+use App\Http\Controllers\Funeral\Frontend\CartController;
 use App\Http\Controllers\Funeral\Admin\CategoryController;
 use App\Http\Controllers\Funeral\Frontend\FrontendController;
 use App\Http\Controllers\Funeral\Frontend\WishlistController;
